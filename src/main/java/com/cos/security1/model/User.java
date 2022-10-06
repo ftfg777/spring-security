@@ -25,6 +25,9 @@ public class User {
 
     private String email;
 
+    private String provider;
+    private String providerId;
+
     @Enumerated(EnumType.STRING)
     private ROLE role; //ROLE_USER, ROLE_ADMIN, ROLE_MANAGER
 

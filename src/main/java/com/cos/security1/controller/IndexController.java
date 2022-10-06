@@ -4,6 +4,8 @@ import com.cos.security1.model.ROLE;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.annotation.Secured;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -69,6 +71,18 @@ public class IndexController {
         userRepository.save(user);
 
         return "redirect:/loginForm";
+    }
+
+    @Secured("ROLE_ADMIN") // 특정메소드에 간단하게 걸고 싶을 때
+    @GetMapping("/info")
+    public @ResponseBody String info(){
+        return "개인정보";
+    }
+
+    @PreAuthorize("hasRole('ROLE_MANAGER') or hasRole('ROLE_ADMIN')") // data 메소드가 실행되기 직전에 실행됨, 여러 조건 걸기
+    @GetMapping("/data")
+    public @ResponseBody String data(){
+        return "데이터정보";
     }
 
 
