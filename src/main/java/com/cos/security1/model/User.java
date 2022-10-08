@@ -12,7 +12,7 @@ import java.util.Objects;
 @Getter
 @Setter
 @ToString
-@RequiredArgsConstructor
+@NoArgsConstructor
 public class User {
 
     @Id
@@ -33,6 +33,18 @@ public class User {
 
     @CreationTimestamp
     private Timestamp createDate;
+
+
+    @Builder
+    public User(String username, String password, String email, String provider, String providerId, ROLE role, Timestamp createDate) {
+        this.username = username;
+        this.password = password;
+        this.email = email;
+        this.provider = provider;
+        this.providerId = providerId;
+        this.role = role;
+        this.createDate = createDate;
+    }
 
     @Override
     public boolean equals(Object o) {
