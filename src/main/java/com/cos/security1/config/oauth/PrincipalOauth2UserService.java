@@ -34,15 +34,13 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
 
         // 회원가입 강제로 진행
         if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
-
+            // 수정 필요
         }
-
         if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")){
-
+            // 수정 필요
         }
-
         if(userRequest.getClientRegistration().getRegistrationId().equals("naver")){
-
+            // 수정 필요
         }
 
         String provider = userRequest.getClientRegistration().getRegistrationId(); //google
