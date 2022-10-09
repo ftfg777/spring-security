@@ -33,7 +33,19 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         System.out.println("getAdditionalParameters : " + userRequest.getAdditionalParameters());
 
         // 회원가입 강제로 진행
-        String provider = userRequest.getClientRegistration().getClientId(); //google
+        if(userRequest.getClientRegistration().getRegistrationId().equals("google")){
+
+        }
+
+        if(userRequest.getClientRegistration().getRegistrationId().equals("facebook")){
+
+        }
+
+        if(userRequest.getClientRegistration().getRegistrationId().equals("naver")){
+
+        }
+
+        String provider = userRequest.getClientRegistration().getRegistrationId(); //google
         String providerId = oAuth2User.getAttribute("sub");
         String username = provider+"_"+providerId; //google_12321420140
         String password = passwordEncoder.encode("겟인데어");

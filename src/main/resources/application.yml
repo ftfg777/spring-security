@@ -1,4 +1,9 @@
 server:
+#  ssl:
+#    key-store: kanu-keystore.p12
+#    key-store-type: PKCS12
+#    key-store-password: a4613112
+#    key-alias: kanu-keystore
   port: 8080
   servlet:
     context-path: /
