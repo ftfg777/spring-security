@@ -1,10 +1,7 @@
 package com.cos.security1.config.oauth;
 
 import com.cos.security1.config.auth.PrincipalDetails;
-import com.cos.security1.config.oauth.provider.FacebookUserInfo;
-import com.cos.security1.config.oauth.provider.GoogleUserInfo;
-import com.cos.security1.config.oauth.provider.NaverUserInfo;
-import com.cos.security1.config.oauth.provider.OAuth2UserInfo;
+import com.cos.security1.config.oauth.provider.*;
 import com.cos.security1.model.ROLE;
 import com.cos.security1.model.User;
 import com.cos.security1.repository.UserRepository;
@@ -54,7 +51,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         }
         if(userRequest.getClientRegistration().getRegistrationId().equals("kakao")){
             System.out.println("카카오 로그인 요청");
-            oAuth2UserInfo = new NaverUserInfo((Map) oAuth2User.getAttributes().get("response"));
+            oAuth2UserInfo = new KakaoUserInfo(oAuth2User.getAttributes());
         }
 
         String provider = oAuth2UserInfo.getProvider();
@@ -62,6 +59,7 @@ public class PrincipalOauth2UserService extends DefaultOAuth2UserService {
         String username = provider+"_"+providerId; //google_12321420140
         String password = passwordEncoder.encode("겟인데어");
         String email = oAuth2UserInfo.getEmail();
+
         ROLE role = ROLE.ROLE_USER;
 
         User userEntity = userRepository.findByUsername(username);
