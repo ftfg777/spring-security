@@ -14,7 +14,7 @@ public class NaverUserInfo implements OAuth2UserInfo{
     }
     @Override
     public String getProviderId() {
-        return null;
+        return attributes.get("id").toString();
     }
 
     @Override
